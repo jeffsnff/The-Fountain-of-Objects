@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "IGvLvg9O2sM=",
+  "success": true,
+  "projectFilePath": "/Users/jeffreyseneff/Dev/C#_Development/Fountain_Objects/FountainOfObjects/FountainOfObjects.csproj",
+  "expectedPackageFiles": [
+    "/Users/jeffreyseneff/.nuget/packages/microsoft.netcore.app.ref/6.0.35/microsoft.netcore.app.ref.6.0.35.nupkg.sha512",
+    "/Users/jeffreyseneff/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.35/microsoft.aspnetcore.app.ref.6.0.35.nupkg.sha512",
+    "/Users/jeffreyseneff/.nuget/packages/microsoft.netcore.app.host.osx-arm64/6.0.35/microsoft.netcore.app.host.osx-arm64.6.0.35.nupkg.sha512"
+  ],
+  "logs": []
+}
