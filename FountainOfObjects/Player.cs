@@ -27,6 +27,9 @@ namespace FountainOfObjects
         case "move west":
           Location.X--;
           break;
+        case "enable fountain":
+          world.PlayerFountain(Location);
+          break;
       }
     }
   }

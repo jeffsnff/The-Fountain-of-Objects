@@ -5,11 +5,19 @@ using System.Reflection.Metadata;
 namespace FountainOfObjects
 {
   public class World
-  {                                    // X    0          1          2            Y
-    private string[,] Board { get; } = {  {"Entrance" , "Drip" , "Fountain" },//  0
-                                          {"Empty"    , "Empty"  , "Drip"   },//  1
-                                          {"Empty"    , "Empty" , "Empty"   } //  2
-                                    };
+  {                                    
+    private string[,] Board { get; } ={
+      { "Entrance" , "Empty"   , "Empty"   },
+      {"Drip"      , "Empty"   , "Empty"   },
+      {"Fountain"  , "Drip"    , "Empty"   }
+    };
+
+    /* What this looks like on a x and y grid
+      2 {"Fountain"  , "Drip"    , "Empty"   }
+      1 {"Drip"      , "Empty"   , "Empty"   }
+      0 { "Entrance" , "Empty"   , "Empty"   }
+              0           1           2
+    */
     public int Location { get; set; }
     public World() { }
 
@@ -44,13 +52,27 @@ namespace FountainOfObjects
         }
       }
     }
+
+    public void PlayerFountain(Point playerLocation)
+    {
+      if (Board[playerLocation.Y, playerLocation.X] == "Fountain")
+      {
+        Console.WriteLine("Turn it on!");
+        Console.ReadKey();
+      }
+    }
+
+
+
+
+
     public void PrintBoardString()
     {
       for (int i = 0; i < Board.GetLength(0); i++)
       {
         for (int j = 0; j < Board.GetLength(1); j++)
         {
-          Console.WriteLine($"Coords: ({i},{j}) : {Board[i,j]}");
+          Console.WriteLine($"Coords: ({i},{j}) : {Board[i, j]}");
         }
         Console.WriteLine();
       }

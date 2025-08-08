@@ -21,6 +21,7 @@ namespace FountainOfObjects
         Console.Write("What do you want to do? ");
         string movement = Console.ReadLine();
         player.PlayerMove(movement, world);
+        // world.PlayerFountain(player.Position);
       }
       // PrintBoard(world);
     }
