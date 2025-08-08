@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Linq;
 using System.Reflection.Metadata;
 
 namespace FountainOfObjects
@@ -10,28 +12,23 @@ namespace FountainOfObjects
       Player player = new Player();
       World world = new World();
 
-      // world.PrintBoardString();
+      while (true)
+      {
+        Console.Clear();
+        Point playerCoords = player.Position;
+        Console.WriteLine($"You are in the room at (Row: {playerCoords.X}, Column: {playerCoords.Y}).");
+        world.PlayerLocation(player);
+        Console.Write("What do you want to do? ");
+        string movement = Console.ReadLine();
+        player.PlayerMove(movement, world);
+      }
+      // PrintBoard(world);
+    }
 
-
+    public static void PrintBoard(World world)
+    {
       Console.Clear();
-      Console.WriteLine($"Starting Position: {player.Position}");
-      world.PlayerLocation(player.Position); // Entrance
-      Console.ReadKey();
-
-      player.PlayerMove(nameof(Move.North));
-      Console.WriteLine($"Current Position: {player.Position}");
-      world.PlayerLocation(player.Position); // Hear Nothing
-      Console.ReadKey();
-
-      player.PlayerMove(nameof(Move.West));
-      Console.WriteLine($"Current Position: {player.Position}");
-      world.PlayerLocation(player.Position); // Hear Drip
-      Console.ReadKey();
-
-      player.PlayerMove(nameof(Move.West));
-      Console.WriteLine($"Current Position: {player.Position}");
-      world.PlayerLocation(player.Position); // Found Fountain
-      Console.ReadKey();
+      world.PrintBoardString();
     }
   }
 }

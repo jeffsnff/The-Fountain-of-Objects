@@ -5,52 +5,29 @@ namespace FountainOfObjects
 {
   public class Player
   {
-    private Point Location = new Point(2,2); // x,y
-    private bool HaveFountainObject { get; set; }
-    private bool AtExit { get; set; }
-    public Player()
-    {
-      HaveFountainObject = false;
-      AtExit = true;
-    }
-
+    private Point Location = new Point(0, 0); // x,y
+    public Player() { }
     public Point Position
     {
       get { return Location; }
     }
-
-    public void PlayerMove(string movement)
+    public void PlayerMove(string movement, World world)
     {
       switch (movement)
       {
-        case nameof(Move.North):
-          if (CheckMovement())
-          {
-            break;
-          }
-          Location.Y--;
-          break;
-        case nameof(Move.South):
+        case "move north":
           Location.Y++;
           break;
-        case nameof(Move.East):
+        case "move south":
+          Location.Y--;
+          break;
+        case "move east":
           Location.X++;
           break;
-        case nameof(Move.West):
+        case "move west":
           Location.X--;
           break;
       }
     }
-    private bool CheckMovement()
-    {
-      Point playerLocation = this.Location;
-      if (playerLocation.Y - 1 < 0)
-      {
-        return true;
-      }
-      return false;
-    }
   }
 }
-
-enum Move { North, South, East, West };
