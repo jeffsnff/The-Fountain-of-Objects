@@ -9,9 +9,8 @@ namespace FountainOfObjects
     private string[,] Board { get; } ={
       { "Entrance" , "Empty"   , "Empty"   },
       {"Drip"      , "Empty"   , "Empty"   },
-      {"Fountain"  , "Drip"    , "Empty"   }
+      {"Fountain"  , "Drip"    , "Empty"   },
     };
-
     /* What this looks like on a x and y grid
       2 {"Fountain"  , "Drip"    , "Empty"   }
       1 {"Drip"      , "Empty"   , "Empty"   }
@@ -23,6 +22,10 @@ namespace FountainOfObjects
     private bool PlayerExit { get; set; } = false;
     public World() { }
 
+    /// <summary>
+    /// Displays player location description based on tile
+    /// </summary>
+    /// <param name="player"></param>
     public void PlayerLocation(Player player)
     {
       Point playerLocation = player.Position;
@@ -76,6 +79,11 @@ namespace FountainOfObjects
       }
     }
 
+    /// <summary>
+    /// Determins if player is on fountain tile when trying to turn enable fountain
+    /// </summary>
+    /// <param name="playerLocation"></param>
+    /// <returns></returns>
     public bool PlayerFountain(Point playerLocation)
     {
       if (Board[playerLocation.Y, playerLocation.X] == "Fountain")
@@ -84,6 +92,9 @@ namespace FountainOfObjects
       }
       return false;
     }
+    /// <summary>
+    /// Ability to turn on fountain and return value of Fountain_On
+    /// </summary>
     public bool EnableFountain
     {
       get
@@ -96,6 +107,10 @@ namespace FountainOfObjects
       }
     }
 
+    /// <summary>
+    /// Ends game when Fountain is enabled and when player is on Exit tile
+    /// </summary>
+    /// <returns></returns>
     public bool GameStatus()
     {
       if (!Fountain_On || !PlayerExit)
@@ -104,6 +119,11 @@ namespace FountainOfObjects
       }
       return true;
     }
+
+    /// <summary>
+    /// Prints row and column of tile.
+    /// Good for visualizing board layout.
+    /// </summary>
     public void PrintBoardString()
     {
       for (int i = 0; i < Board.GetLength(0); i++)
@@ -114,6 +134,23 @@ namespace FountainOfObjects
         }
         Console.WriteLine();
       }
+    }
+
+    /// <summary>
+    /// Returns Max rows in board
+    /// </summary>
+    /// <returns></returns>
+    public int MaxBoardRows()
+    {
+      return Board.GetLength(0) - 1;
+    }
+    /// <summary>
+    /// Returns Max columns in board
+    /// </summary>
+    /// <returns></returns>
+    public int MaxBoardColumns()
+    {
+      return Board.GetLength(1) - 1;
     }
   }
 }

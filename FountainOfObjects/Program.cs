@@ -18,21 +18,12 @@ namespace FountainOfObjects
         Point playerCoords = player.Position;
         Console.WriteLine($"You are in the room at (Row: {playerCoords.X}, Column: {playerCoords.Y}).");
         world.PlayerLocation(player);
-        if (!!world.GameStatus())
-        {
-          break;
-        }
+        if (!!world.GameStatus()) { break; }
         Console.Write("What do you want to do? ");
         string movement = Console.ReadLine();
         player.PlayerMove(movement, world);
       }
       Console.WriteLine("You win!");
-    }
-
-    public static void PrintBoard(World world)
-    {
-      Console.Clear();
-      world.PrintBoardString();
     }
   }
 }
