@@ -5,7 +5,7 @@ using System.Reflection.Metadata;
 namespace FountainOfObjects
 {
   public class World
-  {                                    
+  {
     private string[,] Board { get; } ={
       { "Entrance" , "Empty"   , "Empty"   },
       {"Drip"      , "Empty"   , "Empty"   },
@@ -19,6 +19,8 @@ namespace FountainOfObjects
               0           1           2
     */
     public int Location { get; set; }
+    private bool Fountain_On { get; set; } = false;
+    private bool PlayerExit { get; set; } = false;
     public World() { }
 
     public void PlayerLocation(Player player)
@@ -33,16 +35,37 @@ namespace FountainOfObjects
             switch (Board[y, x])
             {
               case "Entrance":
+                if (Fountain_On)
+                {
+                  Console.WriteLine("The Fountain of Objects have been reactivated, and you have scaped with your life!");
+                  PlayerExit = true;
+                  return;
+                }
                 Console.WriteLine("You see light in this room coming from outside the cavern. This is the entrance.");
                 break;
               case "Empty":
+                if (Fountain_On)
+                {
+                  break;
+                }
                 Console.WriteLine("You hear nothing");
                 break;
               case "Drip":
+                if (Fountain_On)
+                {
+                  break;
+                }
                 Console.WriteLine("You hear a dripping noise. The Fountain of Objects is close");
                 break;
               case "Fountain":
+                if (Fountain_On)
+                {
+                  Console.WriteLine("You hear the rishing waters from the Fountain of Objects. It has been reactivated!");
+                }
+                else
+                {
                   Console.WriteLine("You hear water dripping in this room. The Fountain of Objects is near!");
+                }
                 break;
               default:
                 Console.WriteLine("You do nothing");
@@ -53,19 +76,34 @@ namespace FountainOfObjects
       }
     }
 
-    public void PlayerFountain(Point playerLocation)
+    public bool PlayerFountain(Point playerLocation)
     {
       if (Board[playerLocation.Y, playerLocation.X] == "Fountain")
       {
-        Console.WriteLine("Turn it on!");
-        Console.ReadKey();
+        return true;
+      }
+      return false;
+    }
+    public bool EnableFountain
+    {
+      get
+      {
+        return Fountain_On;
+      }
+      set
+      {
+        Fountain_On = value;
       }
     }
 
-
-
-
-
+    public bool GameStatus()
+    {
+      if (!Fountain_On || !PlayerExit)
+      {
+        return false;
+      }
+      return true;
+    }
     public void PrintBoardString()
     {
       for (int i = 0; i < Board.GetLength(0); i++)
