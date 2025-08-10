@@ -28,7 +28,10 @@ namespace FountainOfObjects
           Location.X--;
           break;
         case "enable fountain":
-          world.PlayerFountain(Location);
+          if (world.PlayerFountain(Location))
+          {
+            world.EnableFountain = true;
+          }
           break;
       }
     }
