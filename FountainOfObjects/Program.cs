@@ -15,15 +15,24 @@ namespace FountainOfObjects
       while (true)
       {
         Console.Clear();
-        Point playerCoords = player.Position;
-        Console.WriteLine($"You are in the room at (Row: {playerCoords.X}, Column: {playerCoords.Y}).");
-        world.PlayerLocation(player);
+        PlayerLocation(player, world);
         if (!!world.GameStatus()) { break; }
-        Console.Write("What do you want to do? ");
-        string movement = Console.ReadLine();
-        player.PlayerMove(movement, world);
+        PlayerMovement(player, world);
       }
       Console.WriteLine("You win!");
+    }
+
+    private static void PlayerLocation(Player player, World world)
+    {
+      Point playerCoords = player.Position;
+      Console.WriteLine($"You are in the room at (Row: {playerCoords.X}, Column: {playerCoords.Y}).");
+      world.PlayerLocation(player);
+    }
+    private static void PlayerMovement(Player player, World world)
+    {
+      Console.Write("What do you want to do? ");
+      string movement = Console.ReadLine();
+      player.PlayerMove(movement, world);
     }
   }
 }
