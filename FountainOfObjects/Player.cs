@@ -63,6 +63,11 @@ namespace FountainOfObjects
           {
             world.EnableFountain = true;
           }
+          else
+          {
+            Console.Write("You are not near the fountain.");
+            Console.ReadKey();
+          }
           break;
       }
     }
