@@ -67,7 +67,7 @@ namespace FountainOfObjects
                 }
                 else
                 {
-                  Console.WriteLine("You hear water dripping in this room. The Fountain of Objects is near!");
+                  Console.WriteLine("You hear water dripping in this room. The Fountain of Objects is here!");
                 }
                 break;
               default:
