@@ -19,20 +19,42 @@ namespace FountainOfObjects
         if (!!world.GameStatus()) { break; }
         PlayerMovement(player, world);
       }
-      Console.WriteLine("You win!");
+      PlayerWin();
     }
 
     private static void PlayerLocation(Player player, World world)
     {
       Point playerCoords = player.Position;
-      Console.WriteLine($"You are in the room at (Row: {playerCoords.X}, Column: {playerCoords.Y}).");
+      Console.Write($"You are in the room at (Row:");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.Write($" {playerCoords.X}");
+      Console.ResetColor();
+      Console.Write(", Column: ");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.Write($"{playerCoords.Y}).\n");
+      Console.ResetColor();
+      Console.ForegroundColor = ConsoleColor.Magenta;
       world.PlayerLocation(player);
+      Console.ResetColor();
     }
     private static void PlayerMovement(Player player, World world)
     {
+      Console.ForegroundColor = ConsoleColor.DarkRed;
       Console.Write("What do you want to do? ");
+      Console.ForegroundColor = ConsoleColor.Blue;
       string movement = Console.ReadLine();
+      Console.ForegroundColor = ConsoleColor.Magenta;
       player.PlayerMove(movement, world);
+      Console.ResetColor();
+    }
+    private static void PlayerWin()
+    {
+      string winningText = "You win!";
+      Console.Clear();
+      Console.WriteLine("\n\n");
+      Console.ForegroundColor = ConsoleColor.Green;
+      Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (winningText.Length / 2)) + "}", winningText));
+      Console.ReadKey();
     }
   }
 }
