@@ -12,6 +12,7 @@ namespace FountainOfObjects
       Player player = new Player();
       World world = new World();
 
+      GameIntro(world);
       while (true)
       {
         Console.Clear();
@@ -54,6 +55,12 @@ namespace FountainOfObjects
       Console.WriteLine("\n\n");
       Console.ForegroundColor = ConsoleColor.Green;
       Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (winningText.Length / 2)) + "}", winningText));
+      Console.ReadKey();
+    }
+    private static void GameIntro(World world)
+    {
+      Console.Clear();
+      world.Intro();
       Console.ReadKey();
     }
   }

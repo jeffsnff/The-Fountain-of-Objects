@@ -69,7 +69,28 @@ namespace FountainOfObjects
             Console.ReadKey();
           }
           break;
+        case "help":
+          Help();
+          break;
       }
+    }
+
+    private static void Help()
+    {
+      Console.ResetColor();
+      Console.Clear();
+      string[] commands = new string[] { "north", "south", "east", "west", "help" };
+      foreach (string command in commands){
+        if (command != "help")
+        {
+          Console.WriteLine($"move {command} - Moves the place {command} of their position");
+        }
+        else
+        {
+          Console.WriteLine("help - Displays the movements");
+        }
+      }
+      Console.ReadKey();
     }
   }
 }

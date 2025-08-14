@@ -152,5 +152,13 @@ namespace FountainOfObjects
     {
       return Board.GetLength(1) - 1;
     }
+
+    public void Intro()
+    {
+      Console.WriteLine("You enter the Cavern of Objects, a maze of rooms filled with dangerous pits in search of the Fountain of Objects.");
+      Console.WriteLine("Light is visible only in the entrance, and no other light is seen anywhere in the caverns.");
+      Console.WriteLine("You must navigate the Caverns with your other senses.");
+      Console.WriteLine("Find the Fountain of Objects, activate it, and return to the entrance.");
+    }
   }
 }
