@@ -6,21 +6,15 @@ namespace FountainOfObjects
 {
   public class World
   {
-    private string[,] Board { get; } ={
-      { "Entrance" , "Empty"   , "Empty"   },
-      {"Drip"      , "Empty"   , "Empty"   },
-      {"Fountain"  , "Drip"    , "Empty"   },
-    };
-    /* What this looks like on a x and y grid
-      2 {"Fountain"  , "Drip"    , "Empty"   }
-      1 {"Drip"      , "Empty"   , "Empty"   }
-      0 { "Entrance" , "Empty"   , "Empty"   }
-              0           1           2
-    */
+    private string[,] Board { get; }
     public int Location { get; set; }
     private bool Fountain_On { get; set; } = false;
     private bool PlayerExit { get; set; } = false;
-    public World() { }
+    public World(string worldSize)
+    {
+
+      this.Board = InitalizeBoard(worldSize);
+    }
 
     /// <summary>
     /// Displays player location description based on tile
@@ -77,6 +71,49 @@ namespace FountainOfObjects
           }
         }
       }
+    }
+
+    private string[,] InitalizeBoard(string boardSize)
+    {
+      if (boardSize.Equals("small"))
+      {
+        return new string[,] {
+          { "Entrance" , "Empty"   , "Empty", "Empty"   },
+          { "Empty"    , "Empty"   , "Empty", "Empty"   },
+          { "Drip"     , "Empty"   , "Empty", "Empty"   },
+          { "Fountain"  , "Drip"    , "Empty", "Empty"  },
+        };
+      }
+      else if (boardSize.Equals("medium"))
+      {
+        return new string[,]{
+          { "Entrance"  , "Empty"   , "Empty",  "Empty"    },
+          { "Empty"     , "Empty"   , "Empty",  "Empty"    },
+          { "Empty"     , "Empty"   , "Empty",  "Empty"    },
+          { "Drip"      , "Empty"   , "Empty",  "Empty"    },
+          { "Empty"     , "Empty"   , "Empty",  "Empty"    },
+          { "Fountain"  , "Drip"    , "Empty",  "Empty"    },
+        };
+      }
+      else
+      {
+        return new string[,]{
+          { "Entrance"  , "Empty"   , "Empty",  "Empty"   },
+          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
+          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
+          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
+          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
+          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
+          { "Drip"      , "Empty"   , "Empty",  "Empty"   },
+          { "Fountain"  , "Drip"    , "Empty",  "Empty"   },
+        };
+      }
+      /* What this looks like on a x and y grid
+      2 { "Entrance" , "Empty"   , "Empty", "Empty" },
+      1 {"Drip"      , "Empty"   , "Empty", "Empty" },
+      0 {"Fountain"  , "Drip"    , "Empty", "Empty" },
+              0           1           2        3
+    */
     }
 
     /// <summary>

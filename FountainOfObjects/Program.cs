@@ -10,7 +10,10 @@ namespace FountainOfObjects
     static void Main(string[] args)
     {
       Player player = new Player();
-      World world = new World();
+      string worldSize = WorldChooser();
+      World world = new World(worldSize);
+
+
 
       GameIntro(world);
       while (true)
@@ -62,6 +65,13 @@ namespace FountainOfObjects
       Console.Clear();
       world.Intro();
       Console.ReadKey();
+    }
+    private static string WorldChooser()
+    {
+      Console.WriteLine("What size world would you like?");
+      Console.WriteLine("Small\nMedium\nLarge");
+      string worldSize = Console.ReadLine().ToLower();
+      return worldSize;
     }
   }
 }
