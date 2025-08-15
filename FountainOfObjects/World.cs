@@ -54,6 +54,13 @@ namespace FountainOfObjects
                 }
                 Console.WriteLine("You hear a dripping noise. The Fountain of Objects is close");
                 break;
+              case "Pit":
+                Console.WriteLine("As you step into the next room, your foot falls onto nothing");
+                Console.WriteLine("As you start to fall forward, you quickly turn around to grab onto something.");
+                Console.WriteLine("However, there is nothing to grab and you tumble to your death.");
+                player.Living = false;
+                Console.ReadKey();
+                break;
               case "Fountain":
                 if (Fountain_On)
                 {
@@ -72,40 +79,44 @@ namespace FountainOfObjects
         }
       }
     }
-
+/// <summary>
+/// Initializes board based on users choise. If Small, Medium or Large is not chosen, defaults to large.
+/// </summary>
+/// <param name="boardSize"></param>
+/// <returns></returns>
     private string[,] InitalizeBoard(string boardSize)
     {
       if (boardSize.Equals("small"))
       {
         return new string[,] {
-          { "Entrance" , "Empty"   , "Empty", "Empty"   },
-          { "Empty"    , "Empty"   , "Empty", "Empty"   },
-          { "Drip"     , "Empty"   , "Empty", "Empty"   },
-          { "Fountain"  , "Drip"    , "Empty", "Empty"  },
+          { "Entrance" , "Empty"   , "Pit"    , "Empty" },
+          { "Pit"      , "Empty"   , "Empty"  , "Empty" },
+          { "Drip"     , "Empty"   , "Pit"    , "Empty" },
+          { "Fountain" , "Drip"    , "Empty"  , "Empty" },
         };
       }
       else if (boardSize.Equals("medium"))
       {
         return new string[,]{
-          { "Entrance"  , "Empty"   , "Empty",  "Empty"    },
-          { "Empty"     , "Empty"   , "Empty",  "Empty"    },
-          { "Empty"     , "Empty"   , "Empty",  "Empty"    },
-          { "Drip"      , "Empty"   , "Empty",  "Empty"    },
-          { "Empty"     , "Empty"   , "Empty",  "Empty"    },
-          { "Fountain"  , "Drip"    , "Empty",  "Empty"    },
+          { "Entrance"  , "Empty"   , "Empty"   ,  "Pit"    },
+          { "Empty"     , "Empty"   , "Empty"   ,  "Empty"  },
+          { "Empty"     , "Pit"     , "Empty"   ,  "Empty"  },
+          { "Empty"     , "Empty"   , "Pit"     ,  "Empty"  },
+          { "Drip"      , "Empty"   , "Empty"   ,  "Empty"  },
+          { "Fountain"  , "Drip"    , "Empty"   ,  "Pit"    },
         };
       }
       else
       {
         return new string[,]{
-          { "Entrance"  , "Empty"   , "Empty",  "Empty"   },
-          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
-          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
-          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
-          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
-          { "Empty"     , "Empty"   , "Empty",  "Empty"   },
-          { "Drip"      , "Empty"   , "Empty",  "Empty"   },
-          { "Fountain"  , "Drip"    , "Empty",  "Empty"   },
+          { "Entrance"  , "Empty"   , "Empty"   ,"Empty"  },
+          { "Empty"     , "Pit"     , "Empty"   ,"Pit"    },
+          { "Empty"     , "Empty"   , "Empty"   ,"Empty"  },
+          { "Pit"       , "Empty"   , "Empty"   ,"Empty"  },
+          { "Empty"     , "Empty"   , "Pit"     ,"Empty"  },
+          { "Empty"     , "Empty"   , "Empty"   ,"Pit"    },
+          { "Drip"      , "Pit"     , "Empty"   ,"Empty"  },
+          { "Fountain"  , "Drip"    , "Empty"   ,"Pit"    },
         };
       }
       /* What this looks like on a x and y grid
@@ -150,11 +161,11 @@ namespace FountainOfObjects
     /// <returns></returns>
     public bool GameStatus()
     {
-      if (!Fountain_On || !PlayerExit)
+      if (Fountain_On && PlayerExit)
       {
-        return false;
+        return true;
       }
-      return true;
+      return false;
     }
 
     /// <summary>

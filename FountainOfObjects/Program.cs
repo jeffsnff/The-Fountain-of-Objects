@@ -13,17 +13,16 @@ namespace FountainOfObjects
       string worldSize = WorldChooser();
       World world = new World(worldSize);
 
-
-
-      GameIntro(world);
+      // GameIntro(world);
       while (true)
       {
         Console.Clear();
         PlayerLocation(player, world);
-        if (!!world.GameStatus()) { break; }
+        if (world.GameStatus()) { break; }
+        if(!player.Living){ break; }
         PlayerMovement(player, world);
       }
-      PlayerWin();
+      GameOver(player);
     }
 
     private static void PlayerLocation(Player player, World world)
@@ -51,14 +50,26 @@ namespace FountainOfObjects
       player.PlayerMove(movement, world);
       Console.ResetColor();
     }
-    private static void PlayerWin()
+    private static void GameOver(Player player)
     {
-      string winningText = "You win!";
-      Console.Clear();
-      Console.WriteLine("\n\n");
-      Console.ForegroundColor = ConsoleColor.Green;
-      Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (winningText.Length / 2)) + "}", winningText));
-      Console.ReadKey();
+      if (player.Living)
+      {
+        string winningText = "You win!";
+        Console.Clear();
+        Console.WriteLine("\n\n");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (winningText.Length / 2)) + "}", winningText));
+        Console.ReadKey();
+      }
+      else
+      {
+        string winningText = "You Died";
+        Console.Clear();
+        Console.WriteLine("\n\n");
+        Console.ForegroundColor = ConsoleColor.DarkRed;
+        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (winningText.Length / 2)) + "}", winningText));
+        Console.ReadKey();
+      }
     }
     private static void GameIntro(World world)
     {

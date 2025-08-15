@@ -6,6 +6,7 @@ namespace FountainOfObjects
   public class Player
   {
     private Point Location = new Point(0, 0); // x,y
+    private bool Alive { get; set; } = true;
     public Player() { }
     public Point Position
     {
@@ -75,12 +76,24 @@ namespace FountainOfObjects
       }
     }
 
+    public bool Living
+    {
+      get
+      {
+        return Alive;
+      }
+      set
+      {
+        Alive = false;
+      }
+    }
     private static void Help()
     {
       Console.ResetColor();
       Console.Clear();
       string[] commands = new string[] { "north", "south", "east", "west", "help" };
-      foreach (string command in commands){
+      foreach (string command in commands)
+      {
         if (command != "help")
         {
           Console.WriteLine($"move {command} - Moves the place {command} of their position");
