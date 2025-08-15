@@ -200,7 +200,9 @@ namespace FountainOfObjects
     {
       return Board.GetLength(1) - 1;
     }
-
+/// <summary>
+/// Story
+/// </summary>
     public void Intro()
     {
       Console.WriteLine("You enter the Cavern of Objects, a maze of rooms filled with dangerous pits in search of the Fountain of Objects.");

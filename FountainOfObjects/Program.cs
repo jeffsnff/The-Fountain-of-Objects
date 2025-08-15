@@ -13,7 +13,7 @@ namespace FountainOfObjects
       string worldSize = WorldChooser();
       World world = new World(worldSize);
 
-      // GameIntro(world);
+      GameIntro(world);
       while (true)
       {
         Console.Clear();
