@@ -99,15 +99,13 @@ Player - Has location
 Monsters - Include pits
 
 Goal -	Activate the Fountain and safely return to the entrance
-
 ---
 
-<!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 This game is based on the "Fountain of Objects" challenge from [C# Players Guide by RB Whitaker ](https://csharpplayersguide.com/)
 
 Thanks to [Othneil Drew](https://github.com/othneildrew/Best-README-Template/blob/main/README.md) for putting this README.md template together.
----
 
 Enjoy exploring the caverns—and may your senses guide you safely to the Fountain... and back!
 
