@@ -1,10 +1,23 @@
-# The Fountain of Objects
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/jeffsnff/The-Fountain-of-Objects">
+    <img src="./FountainOfObjects/Assets/labytinth.png" alt="Logo" width="80" height="80">
+  </a>
+  <h3 align="center">The Fountain of Objects</h3>
+  <p align="center">
+    <a href="https://github.com/jeffsnff/The-Fountain-of-Objects/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
+    ·
+    <a href="https://github.com/jeffsnff/The-Fountain-of-Objects/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
+  </p>
+</div>
 
-**What is this?**  
+
+<!-- ABOUT THE PROJECT -->
+
+## About The Project
 
 "The Fountain of Objects" is a text-based maze game inspired by *The C# Player’s Guide* by Jon Skeet (Starbound Software). You explore a 2D grid of dark cavern rooms, navigate by sensing rather than seeing, find and activate the Fountain of Objects, then return safely to the entrance to win.
-
----
 
 ## Gameplay Overview
 
@@ -16,12 +29,17 @@
 - Reach the **Fountain room**, and type `enable fountain` to activate it.
 - Then make your way back to the **entrance** with the Fountain activated to win the game.
 
+### Built With
+
+[![C#](https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white)](#)
+
+<!-- GETTING STARTED -->
 ## Getting Started
 
-### Prerequisites
+  - [.NET SDK](https://dotnet.microsoft.com/download) (e.g., .NET 6 or later)
+  - A C#-capable IDE or editor (Visual Studio, Visual Studio Code, Rider, etc.)
 
-- [.NET SDK](https://dotnet.microsoft.com/download) (e.g., .NET 6 or later)
-- A C#-capable IDE or editor (Visual Studio, Visual Studio Code, Rider, etc.)
+### Installation
 
 ### Installation
 
@@ -48,8 +66,6 @@
    # (Replace with the actual project path if different.)
    dotnet run --project FountainOfObjects
    ```
-
----
 
 ## How to Play
 
@@ -86,12 +102,11 @@ Goal -	Activate the Fountain and safely return to the entrance
 
 ---
 
-## Acknowledgements
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+This game is based on the "Fountain of Objects" challenge from [C# Players Guide by RB Whitaker ](https://csharpplayersguide.com/)
 
-This game is based on the "Fountain of Objects" challenge from The C# Player’s Guide by RB Whitaker
-
-[C# Players Guide](https://csharpplayersguide.com/)
-
+Thanks to [Othneil Drew](https://github.com/othneildrew/Best-README-Template/blob/main/README.md) for putting this README.md template together.
 ---
 
 Enjoy exploring the caverns—and may your senses guide you safely to the Fountain... and back!
