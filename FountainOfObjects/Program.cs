@@ -34,7 +34,7 @@ namespace FountainOfObjects
       Console.ResetColor();
       Console.Write(", Column: ");
       Console.ForegroundColor = ConsoleColor.Green;
-      Console.Write($"{playerCoords.Y}).\n");
+      Console.Write($"{playerCoords.Y}). Type 'help' for commands.\n");
       Console.ResetColor();
       Console.ForegroundColor = ConsoleColor.Magenta;
       world.PlayerLocation(player);
@@ -79,6 +79,7 @@ namespace FountainOfObjects
     }
     private static string WorldChooser()
     {
+      Console.Clear();
       Console.WriteLine("What size world would you like?");
       Console.WriteLine("Small\nMedium\nLarge");
       string worldSize = Console.ReadLine().ToLower();

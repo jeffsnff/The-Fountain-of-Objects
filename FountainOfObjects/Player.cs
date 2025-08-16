@@ -91,16 +91,20 @@ namespace FountainOfObjects
     {
       Console.ResetColor();
       Console.Clear();
-      string[] commands = new string[] { "north", "south", "east", "west", "help" };
+      string[] commands = new string[] { "north", "south", "east", "west", "help", "enable" };
       foreach (string command in commands)
       {
-        if (command != "help")
+        if (command != "help" && command != "enable")
         {
-          Console.WriteLine($"move {command} - Moves the place {command} of their position");
+          Console.WriteLine($"move {command} - Moves you {command} of your current position");
         }
-        else
+        else if (command == "help")
         {
           Console.WriteLine("help - Displays the movements");
+        }
+        else if (command == "enable")
+        {
+          Console.WriteLine("enable fountain - Enables the fountain");
         }
       }
       Console.ReadKey();

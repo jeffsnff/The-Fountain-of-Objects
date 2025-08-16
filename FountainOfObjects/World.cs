@@ -6,7 +6,13 @@ namespace FountainOfObjects
 {
   public class World
   {
-    private string[,] Board { get; }
+    private Tile[,] Board { get; }
+    private Tile[,] Board1 { get; } = {
+      { Tile.Entrance , Tile.Empty   , Tile.Pit    , Tile.Empty   },
+      { Tile.Pit      , Tile.Empty   , Tile.Empty  , Tile.Empty   },
+      { Tile.Drip     , Tile.Empty   , Tile.Pit    , Tile.Empty   },
+      { Tile.Fountain , Tile.Drip    , Tile.Empty  , Tile.Pit     },
+    };
     public int Location { get; set; }
     private bool Fountain_On { get; set; } = false;
     private bool PlayerExit { get; set; } = false;
@@ -31,7 +37,7 @@ namespace FountainOfObjects
           {
             switch (Board[y, x])
             {
-              case "Entrance":
+              case Tile.Entrance:
                 if (Fountain_On)
                 {
                   Console.WriteLine("The Fountain of Objects have been reactivated, and you have scaped with your life!");
@@ -40,28 +46,28 @@ namespace FountainOfObjects
                 }
                 Console.WriteLine("You see light in this room coming from outside the cavern. This is the entrance.");
                 break;
-              case "Empty":
+              case Tile.Empty:
                 if (Fountain_On)
                 {
                   break;
                 }
                 Console.WriteLine("You hear nothing");
                 break;
-              case "Drip":
+              case Tile.Drip:
                 if (Fountain_On)
                 {
                   break;
                 }
                 Console.WriteLine("You hear a dripping noise. The Fountain of Objects is close");
                 break;
-              case "Pit":
+              case Tile.Pit:
                 Console.WriteLine("As you step into the next room, your foot falls onto nothing");
                 Console.WriteLine("As you start to fall forward, you quickly turn around to grab onto something.");
                 Console.WriteLine("However, there is nothing to grab and you tumble to your death.");
                 player.Living = false;
                 Console.ReadKey();
                 break;
-              case "Fountain":
+              case Tile.Fountain:
                 if (Fountain_On)
                 {
                   Console.WriteLine("You hear the rishing waters from the Fountain of Objects. It has been reactivated!");
@@ -79,44 +85,53 @@ namespace FountainOfObjects
         }
       }
     }
-/// <summary>
-/// Initializes board based on users choise. If Small, Medium or Large is not chosen, defaults to large.
-/// </summary>
-/// <param name="boardSize"></param>
-/// <returns></returns>
-    private string[,] InitalizeBoard(string boardSize)
+    /// <summary>
+    /// Initializes board based on users choise. If Small, Medium or Large is not chosen, defaults to large.
+    /// </summary>
+    /// <param name="boardSize"></param>
+    /// <returns></returns>
+    private Tile[,] InitalizeBoard(string boardSize)
     {
-      if (boardSize.Equals("small"))
+      if (boardSize.Equals(Enum.GetName(Size.Small)?.ToLower()))
       {
-        return new string[,] {
-          { "Entrance" , "Empty"   , "Pit"    , "Empty" },
-          { "Pit"      , "Empty"   , "Empty"  , "Empty" },
-          { "Drip"     , "Empty"   , "Pit"    , "Empty" },
-          { "Fountain" , "Drip"    , "Empty"  , "Empty" },
+        return new Tile[,] {
+          { Tile.Entrance , Tile.Empty   , Tile.Pit    , Tile.Empty },
+          { Tile.Pit      , Tile.Empty   , Tile.Empty  , Tile.Empty },
+          { Tile.Drip     , Tile.Empty   , Tile.Pit    , Tile.Empty },
+          { Tile.Fountain , Tile.Drip    , Tile.Empty  , Tile.Pit   },
         };
       }
-      else if (boardSize.Equals("medium"))
+      else if (boardSize.Equals(Enum.GetName(Size.Medium)?.ToLower()))
       {
-        return new string[,]{
-          { "Entrance"  , "Empty"   , "Empty"   ,  "Pit"    },
-          { "Empty"     , "Empty"   , "Empty"   ,  "Empty"  },
-          { "Empty"     , "Pit"     , "Empty"   ,  "Empty"  },
-          { "Empty"     , "Empty"   , "Pit"     ,  "Empty"  },
-          { "Drip"      , "Empty"   , "Empty"   ,  "Empty"  },
-          { "Fountain"  , "Drip"    , "Empty"   ,  "Pit"    },
+        return new Tile[,]{
+          { Tile.Entrance , Tile.Empty  , Tile.Empty    ,  Tile.Pit   },
+          { Tile.Empty    , Tile.Empty  , Tile.Empty    ,  Tile.Empty },
+          { Tile.Empty    , Tile.Pit    , Tile.Empty    ,  Tile.Empty },
+          { Tile.Empty    , Tile.Empty  , Tile.Pit      ,  Tile.Empty },
+          { Tile.Drip     , Tile.Empty  , Tile.Empty    ,  Tile.Empty },
+          { Tile.Fountain , Tile.Drip   , Tile.Empty    ,  Tile.Pit   },
         };
+      }
+      else if (boardSize.Equals(Enum.GetName(Size.Large)?.ToLower()))
+      {
+        return new Tile[,]{
+            { Tile.Entrance , Tile.Empty  , Tile.Empty  ,  Tile.Empty },
+            { Tile.Empty    , Tile.Pit    , Tile.Empty  ,  Tile.Pit   },
+            { Tile.Empty    , Tile.Empty  , Tile.Empty  ,  Tile.Empty },
+            { Tile.Pit      , Tile.Empty  , Tile.Empty  ,  Tile.Empty },
+            { Tile.Empty    , Tile.Empty  , Tile.Pit    ,  Tile.Empty },
+            { Tile.Empty    , Tile.Empty  , Tile.Empty  ,  Tile.Pit   },
+            { Tile.Drip     , Tile.Pit    , Tile.Empty  ,  Tile.Empty },
+            { Tile.Fountain , Tile.Drip   , Tile.Empty  ,  Tile.Pit   },
+          };
       }
       else
       {
-        return new string[,]{
-          { "Entrance"  , "Empty"   , "Empty"   ,"Empty"  },
-          { "Empty"     , "Pit"     , "Empty"   ,"Pit"    },
-          { "Empty"     , "Empty"   , "Empty"   ,"Empty"  },
-          { "Pit"       , "Empty"   , "Empty"   ,"Empty"  },
-          { "Empty"     , "Empty"   , "Pit"     ,"Empty"  },
-          { "Empty"     , "Empty"   , "Empty"   ,"Pit"    },
-          { "Drip"      , "Pit"     , "Empty"   ,"Empty"  },
-          { "Fountain"  , "Drip"    , "Empty"   ,"Pit"    },
+        return new Tile[,] {
+          { Tile.Entrance , Tile.Empty   , Tile.Pit    , Tile.Empty   },
+          { Tile.Pit      , Tile.Empty   , Tile.Empty  , Tile.Empty   },
+          { Tile.Drip     , Tile.Empty   , Tile.Pit    , Tile.Empty   },
+          { Tile.Fountain , Tile.Drip    , Tile.Empty  , Tile.Pit     },
         };
       }
       /* What this looks like on a x and y grid
@@ -134,7 +149,7 @@ namespace FountainOfObjects
     /// <returns></returns>
     public bool PlayerFountain(Point playerLocation)
     {
-      if (Board[playerLocation.Y, playerLocation.X] == "Fountain")
+      if (Board[playerLocation.Y, playerLocation.X] == Tile.Fountain)
       {
         return true;
       }
@@ -200,15 +215,19 @@ namespace FountainOfObjects
     {
       return Board.GetLength(1) - 1;
     }
-/// <summary>
-/// Story
-/// </summary>
+    /// <summary>
+    /// Story
+    /// </summary>
     public void Intro()
     {
-      Console.WriteLine("You enter the Cavern of Objects, a maze of rooms filled with dangerous pits in search of the Fountain of Objects.");
+      Console.WriteLine("You enter the Cavern of Objects, a labyrinth of rooms filled with dangerous pits in search of the Fountain of Objects.");
       Console.WriteLine("Light is visible only in the entrance, and no other light is seen anywhere in the caverns.");
       Console.WriteLine("You must navigate the Caverns with your other senses.");
       Console.WriteLine("Find the Fountain of Objects, activate it, and return to the entrance.");
+      Console.WriteLine("Press 'Enter' to continue");
     }
   }
 }
+
+enum Tile { Entrance, Fountain, Drip, Empty, Pit }
+enum Size { Small, Medium, Large }
