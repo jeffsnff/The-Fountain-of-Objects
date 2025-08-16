@@ -45,7 +45,8 @@ namespace FountainOfObjects
       Console.ForegroundColor = ConsoleColor.DarkRed;
       Console.Write("What do you want to do? ");
       Console.ForegroundColor = ConsoleColor.Blue;
-      string movement = Console.ReadLine();
+      string movement = Console.ReadLine() ?? string.Empty;
+      movement = movement.Trim(' ');
       Console.ForegroundColor = ConsoleColor.Magenta;
       player.PlayerMove(movement, world);
       Console.ResetColor();
@@ -82,8 +83,8 @@ namespace FountainOfObjects
       Console.Clear();
       Console.WriteLine("What size world would you like?");
       Console.WriteLine("Small\nMedium\nLarge");
-      string worldSize = Console.ReadLine().ToLower();
-      return worldSize;
+      string worldSize = Console.ReadLine() ?? string.Empty;
+      return worldSize?.ToLower();
     }
   }
 }
