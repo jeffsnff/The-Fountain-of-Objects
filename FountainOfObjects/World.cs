@@ -7,12 +7,6 @@ namespace FountainOfObjects
   public class World
   {
     private Tile[,] Board { get; }
-    private Tile[,] Board1 { get; } = {
-      { Tile.Entrance , Tile.Empty   , Tile.Pit    , Tile.Empty   },
-      { Tile.Pit      , Tile.Empty   , Tile.Empty  , Tile.Empty   },
-      { Tile.Drip     , Tile.Empty   , Tile.Pit    , Tile.Empty   },
-      { Tile.Fountain , Tile.Drip    , Tile.Empty  , Tile.Pit     },
-    };
     public int Location { get; set; }
     private bool Fountain_On { get; set; } = false;
     private bool PlayerExit { get; set; } = false;
@@ -135,10 +129,11 @@ namespace FountainOfObjects
         };
       }
       /* What this looks like on a x and y grid
-      2 { "Entrance" , "Empty"   , "Empty", "Empty" },
-      1 {"Drip"      , "Empty"   , "Empty", "Empty" },
-      0 {"Fountain"  , "Drip"    , "Empty", "Empty" },
-              0           1           2        3
+      0 { Tile.Entrance , Tile.Empty   , Tile.Pit    , Tile.Empty   },
+      1 { Tile.Pit      , Tile.Empty   , Tile.Empty  , Tile.Empty   },
+      2 { Tile.Drip     , Tile.Empty   , Tile.Pit    , Tile.Empty   },
+      3 { Tile.Fountain , Tile.Drip    , Tile.Empty  , Tile.Pit     },
+              0           1           2        3          4
     */
     }
 
