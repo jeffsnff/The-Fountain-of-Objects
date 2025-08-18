@@ -7,6 +7,7 @@ namespace FountainOfObjects
   {
     private Point Location = new Point(0, 0); // x,y
     private bool Alive { get; set; } = true;
+    private DateTime Time { get; } = DateTime.Now;
     public Player() { }
     public Point Position
     {
@@ -108,6 +109,14 @@ namespace FountainOfObjects
         }
       }
       Console.ReadKey();
+    }
+
+    public TimeSpan GameTime
+    {
+      get
+      {
+        return DateTime.Now - Time;
+      }
     }
   }
 }

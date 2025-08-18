@@ -60,7 +60,6 @@ namespace FountainOfObjects
         Console.WriteLine("\n\n");
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (winningText.Length / 2)) + "}", winningText));
-        Console.ReadKey();
       }
       else
       {
@@ -69,8 +68,12 @@ namespace FountainOfObjects
         Console.WriteLine("\n\n");
         Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (winningText.Length / 2)) + "}", winningText));
-        Console.ReadKey();
+
       }
+      // Console.WriteLine(player.GameTime);
+      string GameTime = "Time in game: " + player.GameTime;
+      Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (GameTime.Length / 2)) + "}", GameTime));
+      Console.ReadKey();
     }
     private static void GameIntro(World world)
     {
