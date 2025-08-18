@@ -17,7 +17,7 @@
 
 ## About The Project
 
-"The Fountain of Objects" is a text-based maze game inspired by *The C# Player’s Guide* by Jon Skeet (Starbound Software). You explore a 2D grid of dark cavern rooms, navigate by sensing rather than seeing, find and activate the Fountain of Objects, then return safely to the entrance to win.
+"The Fountain of Objects" is a text-based maze game inspired by *The C# Player’s Guide* by RB Whitaker. You explore a 2D grid of dark cavern rooms, navigate by sensing rather than seeing, find and activate the Fountain of Objects, then return safely to the entrance to win.
 
 ## Gameplay Overview
 
